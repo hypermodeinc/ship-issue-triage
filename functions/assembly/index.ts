@@ -1,7 +1,17 @@
-import { inference } from "@hypermode/functions-as";
+import { models } from "@hypermode/functions-as";
+import {
+  ClassificationModel,ClassifierResult
+} from "@hypermode/models-as/models/experimental/classification";
 
-export function testClassifier(text: string): string {
-  const modelName = "sentiment-classifier";
-  const threshold: f32 = 0.5;
-  return inference.classifyText(modelName, text, threshold);
+const ISSUE_CLASSIFIER_MODEL_NAME = "issue-classifier";
+
+export function classifyIssueText(text: string): ClassifierResult {
+  
+  const model = models.getModel<ClassificationModel>(ISSUE_CLASSIFIER_MODEL_NAME);
+  const input = model.createInput([text]);
+  const output = model.invoke(input);
+
+  return output.predictions[0];
+  
+  
 }

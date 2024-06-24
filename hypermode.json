@@ -5,8 +5,8 @@
     // As an example, the particular model below is a sentiment classifier from Hugging Face,
     // which is hosted on Hypermode and used in the starter function in this repository.
     // You can update or remove this model as needed.
-    "sentiment-classifier": {
-      "sourceModel": "distilbert/distilbert-base-uncased-finetuned-sst-2-english",
+    "issue-classifier": {
+      "sourceModel": "AntoineMC/distilbart-mnli-github-issues",
       "provider": "hugging-face",
       "host": "hypermode"
     }
