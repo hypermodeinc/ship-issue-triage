@@ -1,36 +1,32 @@
 {
   "$schema": "https://manifest.hypermode.com/hypermode.json",
+
   "models": {
-    // Models used by your Hypermode project are defined here.
-    // As an example, the particular model below is a sentiment classifier from Hugging Face,
-    // which is hosted on Hypermode and used in the starter function in this repository.
-    // You can update or remove this model as needed.
     "issue-classifier": {
       "sourceModel": "AntoineMC/distilbart-mnli-github-issues",
       "provider": "hugging-face",
       "host": "hypermode"
     },
-    // This defines the model that will be used for text generation.
     "text-generator": {
       "sourceModel": "gpt-3.5-turbo",
       "host": "openai",
       "path": "v1/chat/completions"
     },
-    "minilm":{
+    "minilm": {
       "sourceModel": "sentence-transformers/all-MiniLM-L6-v2",
       "host": "hypermode",
       "provider": "hugging-face"
     }
   },
+
   "hosts": {
-    // If you use any external hosts in your project, specify them here.
     "github": {
       "baseUrl": "https://api.github.com/",
       "headers": {
         "Authorization": "Bearer {{AUTH_TOKEN}}"
       }
     },
-        // This defines the OpenAI host, which is used by the model above.
+    // This defines the OpenAI host, which is used by the model above.
     // The {{API_KEY}} will be replaced by the secret provided in the Hypermode Console.
     "openai": {
       "baseUrl": "https://api.openai.com/",
@@ -39,17 +35,15 @@
       }
     }
   },
+
   "collections": {
-    // This defines a collection of products, having two search methods.
+    // This defines a collection of issues, with one search method.
     "issuesCollection": {
       "searchMethods": {
         "titleEmbedding": {
-          // The embedder is the name of the function that will be used to generate vector embeddings.
-          // By default, it uses a sequential index.
           "embedder": "embedIssue"
         }
       }
     }
   }
-  
 }
