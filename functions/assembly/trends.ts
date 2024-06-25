@@ -1,7 +1,7 @@
 import { models } from "@hypermode/functions-as";
+import { User } from "./github";
 import {
   OpenAIChatModel,
-  ResponseFormat,
   SystemMessage,
   UserMessage,
 } from "@hypermode/models-as/models/openai/chat";
