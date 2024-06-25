@@ -1,7 +1,10 @@
 import { models } from "@hypermode/functions-as";
+import {generateTrendSummary} from "./genai";
+
 import {
   ClassificationModel,ClassifierResult
 } from "@hypermode/models-as/models/experimental/classification";
+import {getGithubIssues, User} from "./github";
 
 const ISSUE_CLASSIFIER_MODEL_NAME = "issue-classifier";
 
@@ -26,5 +29,15 @@ export function classifyIssueText(text: string): IssueLabel {
     confidence: output.confidence,
   };
   
+}
+
+export function trendSummary(    
+  owner: string,
+  repo: string,
+  since: string): string {
+    const issues = getGithubIssues(owner, repo, since);
   
+    const context = issues.map<string>(issue => `${issue.created_at} ${(issue.user != null)? "From "+(<User>issue.user).login: ""} : ${issue.title}`).join("\n");
+    const trend = generateTrendSummary(context);
+    return trend;
 }
