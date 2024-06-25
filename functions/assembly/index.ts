@@ -80,11 +80,11 @@ export function trendSummary(
 // In this example, we will create embedding vectors from input text strings.
 // For comparison, we'll do this with two different models.
 
-export function embedIssue(text: string): f32[] {
+export function embedIssue(text: string): f64[] {
   const model = models.getModel<EmbeddingsModel>("minilm");
   const input = model.createInput([text]);
   const output = model.invoke(input);
-  return output.predictions[0];
+  return output.predictions[0].map<f64>(x => x);
 }
 
 export function addIssue(id: string, title: string): string {
