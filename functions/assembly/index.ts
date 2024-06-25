@@ -1,3 +1,3 @@
 export { classifyIssue } from "./classify";
-export { similarIssues } from "./similar";
+export { similarIssues, addIssue } from "./similar";
 export { trendSummary } from "./trends";
