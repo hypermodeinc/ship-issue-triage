@@ -11,20 +11,21 @@ export class SimilarIssue {
 const collectionName = "issuesCollection";
 const searchMethod = "titleEmbedding";
 
-export function similarIssues(title: string): SimilarIssue {
+export function similarIssues(title: string): SimilarIssue[] {
   const response = collections.search(
     collectionName,
     searchMethod,
     title,
-    1,
+    3,
     true,
   );
-
-  const result = <SimilarIssue>{
-    id: response.objects[0].key,
-    title: response.objects[0].text,
-    similarity: response.objects[0].score,
-  };
+  const result = response.objects.map<SimilarIssue>((object) => {
+    return <SimilarIssue>{
+      id: object.key,
+      title: object.text,
+      similarity: object.score,
+    };
+  });
 
   return result;
 }
