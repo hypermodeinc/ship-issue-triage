@@ -8,7 +8,7 @@
       "host": "hypermode"
     },
     "text-generator": {
-      "sourceModel": "gpt-3.5-turbo",
+      "sourceModel": "gpt-4o",
       "host": "openai",
       "path": "v1/chat/completions"
     }
