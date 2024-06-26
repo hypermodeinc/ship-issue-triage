@@ -1,33 +1,21 @@
 import { collections } from "@hypermode/functions-as";
 
-// Define the structure we expect for the output of the similarity search function.
-@json
-export class SimilarIssue {
-  id!: string;
-  title!: string;
-  similarity!: f64;
-}
-
-const SPAM_COLLECTION = "spamCollection";
-
-export function isSpam(title: string): f32 {
-  let score: f32 = 0.0;
+export function isSpam(title: string): f64 {
   const response = collections.search(
-    SPAM_COLLECTION,
+    "spamCollection",
     "titleEmbedding",
-    title,
-    1,
-    true,
+    title, // the text to search for
+    1, // the number of results to return
   );
-  if (response.objects.length > 0) {
-    score = <f32>response.objects[0].score;
+
+  if (response.objects.length == 0) {
+    return 0;
   }
 
-  return score;
+  return response.objects[0].score;
 }
 
 export function addSpam(id: string, title: string): string {
-  collections.upsert(SPAM_COLLECTION, id, title);
-
-  return "success";
+  const results = collections.upsert("spamCollection", id, title);
+  return results.status;
 }

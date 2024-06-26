@@ -8,30 +8,26 @@ export class SimilarIssue {
   similarity!: f64;
 }
 
-const collectionName = "issuesCollection";
-const searchMethod = "titleEmbedding";
-
 export function similarIssues(title: string): SimilarIssue[] {
   const response = collections.search(
-    collectionName,
-    searchMethod,
-    title,
-    3,
-    true,
+    "issuesCollection",
+    "titleEmbedding",
+    title, // the text to search for
+    3, // return the top 3 results
+    true, // include text in the results
   );
-  const result = response.objects.map<SimilarIssue>((object) => {
-    return <SimilarIssue>{
-      id: object.key,
-      title: object.text,
-      similarity: object.score,
-    };
-  });
 
-  return result;
+  return response.objects.map<SimilarIssue>(
+    (o) =>
+      <SimilarIssue>{
+        id: o.key,
+        title: o.text,
+        similarity: o.score,
+      },
+  );
 }
 
 export function addIssue(id: string, title: string): string {
-  collections.upsert(collectionName, id, title);
-
-  return "success";
+  const result = collections.upsert("issuesCollection", id, title);
+  return result.status;
 }

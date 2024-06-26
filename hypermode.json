@@ -26,8 +26,6 @@
         "Authorization": "Bearer {{AUTH_TOKEN}}"
       }
     },
-    // This defines the OpenAI host, which is used by the model above.
-    // The {{API_KEY}} will be replaced by the secret provided in the Hypermode Console.
     "openai": {
       "baseUrl": "https://api.openai.com/",
       "headers": {
@@ -37,7 +35,6 @@
   },
 
   "collections": {
-    // This defines a collection of issues, with one search method.
     "issuesCollection": {
       "searchMethods": {
         "titleEmbedding": {
