@@ -2,7 +2,7 @@ import { collections } from "@hypermode/functions-as";
 
 // Define the structure we expect for the output of the similarity search function.
 @json
-export class SimilarIssue {
+class SimilarIssue {
   id!: string;
   title!: string;
   similarity!: f64;
