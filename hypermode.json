@@ -41,13 +41,6 @@
           "embedder": "minilmEmbedder"
         }
       }
-    },
-    "spamCollection": {
-      "searchMethods": {
-        "byTitle": {
-          "embedder": "minilmEmbedder"
-        }
-      }
     }
   }
 }
