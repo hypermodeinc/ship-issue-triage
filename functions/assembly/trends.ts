@@ -6,8 +6,8 @@ import {
   UserMessage,
 } from "@hypermode/models-as/models/openai/chat";
 
-export function trendSummary(owner: string, repo: string, since: Date): string {
-  const issues = getGithubIssues(owner, repo, since);
+export function trendSummary(owner: string, repo: string): string {
+  const issues = getGithubIssues(owner, repo);
 
   const summary = issues
     .map<string>(
@@ -17,11 +17,11 @@ export function trendSummary(owner: string, repo: string, since: Date): string {
     .join("\n");
 
   const model = models.getModel<OpenAIChatModel>("text-generator");
-  const prompt =
+  const instruction =
     "Provide a summary of the trends in the repository based on the issues created.";
 
   const input = model.createInput([
-    new SystemMessage(prompt),
+    new SystemMessage(instruction),
     new UserMessage(summary),
   ]);
 

@@ -1,12 +1,12 @@
 import { http } from "@hypermode/functions-as";
 
-export function getGithubIssues(
-  owner: string,
-  repo: string,
-  since: Date,
-): Issue[] {
+// This function uses the Github REST API to get the issues for a repository.
+// See https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues
+// That documentation explains the request and response format.
+
+export function getGithubIssues(owner: string, repo: string): Issue[] {
   const limit = 100;
-  const url = `https://api.github.com/repos/${owner}/${repo}/issues?since=${since}&per_page=${limit}`;
+  const url = `https://api.github.com/repos/${owner}/${repo}/issues?per_page=${limit}`;
   console.log(`Getting Github Issues for ${owner}/${repo}`);
 
   const request = new http.Request(url, {
@@ -35,6 +35,8 @@ export function getGithubIssues(
 }
 
 // Define the structure we expect for the output of the GitHub API.
+// We have only need to define the structure of the fields we are interested in.
+// Any other fields in the response JSON will be ignored.
 
 @json
 export class Issue {
