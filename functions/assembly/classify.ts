@@ -17,6 +17,13 @@ export function classifyIssue(
   const input = model.createInput([summary]);
   const output = model.invoke(input).predictions[0];
 
+  if (output.confidence < 0.6) {
+    console.log(
+      `Issue ${id} couldn't be classified. Confidence: ${output.confidence}`,
+    );
+    return "unknown";
+  }
+
   console.log(`Issue ${id} classified as ${output.label}`);
   return output.label;
 }
