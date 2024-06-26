@@ -11,7 +11,7 @@ export class SimilarIssue {
 export function similarIssues(title: string): SimilarIssue[] {
   const response = collections.search(
     "issuesCollection",
-    "titleEmbedding",
+    "byTitle",
     title, // the text to search for
     3, // return the top 3 results
     true, // include text in the results

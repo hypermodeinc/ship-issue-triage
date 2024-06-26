@@ -37,15 +37,15 @@
   "collections": {
     "issuesCollection": {
       "searchMethods": {
-        "titleEmbedding": {
-          "embedder": "embedIssue"
+        "byTitle": {
+          "embedder": "minilmEmbedder"
         }
       }
     },
     "spamCollection": {
       "searchMethods": {
-        "titleEmbedding": {
-          "embedder": "embedIssue"
+        "byTitle": {
+          "embedder": "minilmEmbedder"
         }
       }
     }

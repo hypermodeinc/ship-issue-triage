@@ -3,7 +3,7 @@ import { collections } from "@hypermode/functions-as";
 export function isSpam(title: string): f64 {
   const response = collections.search(
     "spamCollection",
-    "titleEmbedding",
+    "byTitle",
     title, // the text to search for
     1, // the number of results to return
   );
