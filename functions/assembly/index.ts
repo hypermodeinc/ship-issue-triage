@@ -1,2 +1,2 @@
-export { trendSummary } from "./trends";
-export { classifyIssue } from "./classify";
+export * from "./trends";
+export * from "./classify";
