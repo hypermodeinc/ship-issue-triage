@@ -26,8 +26,3 @@ export function similarIssues(title: string): SimilarIssue[] {
       },
   );
 }
-
-export function addIssue(id: string, title: string): string {
-  const result = collections.upsert("issuesCollection", id, title);
-  return result.status;
-}
