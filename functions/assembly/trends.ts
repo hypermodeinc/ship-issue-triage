@@ -17,8 +17,7 @@ export function trendSummary(owner: string, repo: string): string {
     .join("\n");
 
   const model = models.getModel<OpenAIChatModel>("text-generator");
-  const instruction =
-    "Provide a summary of the trends in the repository based on the issues created.";
+  const instruction = `Provide a summary of the trends in the repository based on the issues created.`;
 
   const input = model.createInput([
     new SystemMessage(instruction),
