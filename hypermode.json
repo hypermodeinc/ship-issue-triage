@@ -11,6 +11,21 @@
       "sourceModel": "gpt-4o",
       "host": "openai",
       "path": "v1/chat/completions"
+    },
+    "minilm": {
+      "sourceModel": "sentence-transformers/all-MiniLM-L6-v2",
+      "host": "hypermode",
+      "provider": "hugging-face"
+    }
+  },
+
+  "collections": {
+    "issuesCollection": {
+      "searchMethods": {
+        "byTitle": {
+          "embedder": "minilmEmbedder"
+        }
+      }
     }
   },
 
