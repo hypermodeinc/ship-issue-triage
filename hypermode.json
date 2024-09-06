@@ -8,9 +8,9 @@
       "host": "hypermode"
     },
     "text-generator": {
-      "sourceModel": "gpt-4o",
-      "host": "openai",
-      "path": "v1/chat/completions"
+      "sourceModel": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+      "provider": "hugging-face",
+      "host": "hypermode"
     },
     "minilm": {
       "sourceModel": "sentence-transformers/all-MiniLM-L6-v2",
@@ -34,12 +34,6 @@
       "baseUrl": "https://api.github.com/",
       "headers": {
         "Authorization": "Bearer {{AUTH_TOKEN}}"
-      }
-    },
-    "openai": {
-      "baseUrl": "https://api.openai.com/",
-      "headers": {
-        "Authorization": "Bearer {{API_KEY}}"
       }
     }
   }
