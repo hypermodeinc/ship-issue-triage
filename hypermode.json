@@ -32,9 +32,7 @@
   "hosts": {
     "github": {
       "baseUrl": "https://api.github.com/",
-      "headers": {
-        "Authorization": "Bearer {{AUTH_TOKEN}}"
-      }
+      "headers": {}
     }
   }
 }
